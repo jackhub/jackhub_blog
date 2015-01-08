@@ -15,7 +15,7 @@ $ npm install hexo-renderer-stylus@0.1 --save
 >主要配置文件**/blog/_config.yml**和主题文件**/theme_name/_config.yml**  
 >参考博客:http://zipperary.com/2013/05/29/hexo-guide-3/
 
-###3. 存放博客图片和一些素材
+####3. 存放博客图片和一些素材
 >在博客目录source中创建一个img文件加, 然后将你要用的图片放在那里, 然后使用/img/image_name引用它就可以啦  
 >404页面: 直接在source目录下面创建一个就可以了, 可以使用腾讯公益.
 
@@ -30,4 +30,18 @@ $ npm install hexo-renderer-stylus@0.1 --save
 	<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>
 </body>
 </html>
+```
+
+####4. 使用git保管hexo  
+
+```
+#1. 创建一个仓库jackhub_blog, 并clone到本地仓库
+$ git clone https://github.com/jackhub/jackhub_blog.git
+
+#2. 加hexo文件复制过来到git目录, 添加并提交
+$ git add .
+$ git commit -m "blog init"
+
+#3. 同步到git远程仓库中
+$ git push
 ```
