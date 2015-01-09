@@ -192,41 +192,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="The_view_draw_cycle">The view draw cycle</h3>
+        <h3 id="The_view_draw_cycle_『view生命周期』">The view draw cycle 『view生命周期』</h3>
 <p>When a view first appears on<br>the screen, the system asks it to draw its content. The system captures a snapshot of this content and uses<br>that snapshot as the view’s visual representation. If you never change the view’s content, the view’s drawing<br>code may never be called again. The snapshot image is reused for most operations involving the view. If you<br>do change the content, you notify the system that the view has changed. The view then repeats the process<br>of drawing the view and capturing a snapshot of the new results.</p>
 <p>当你的view内容变化的时候，我们不直接重绘它，而是通过<em>setNeedsDisplay</em>和<em>setNeedsDisplayInRect:</em>方法通知系统去帮我们完成重绘。</p>
 <blockquote>
 <p>When the contents of your view change, you do not redraw those changes directly. Instead, you invalidate the<br>view using either the setNeedsDisplay or setNeedsDisplayInRect: method.  </p>
 </blockquote>
-<h3 id="Content_Mode">Content Mode</h3>
+<h3 id="Content_Mode_『如何拉伸属性』">Content Mode 『如何拉伸属性』</h3>
 <p>设置当view的形状发生变化时，它的content如何重绘，例如图片是拉伸，平铺等。</p>
 <blockquote>
 <p>Each view has a content mode that controls how the view recycles its content in response to changes in the<br>view’s geometry and whether it recycles its content at all.  </p>
 </blockquote>
 <p>一般有这些类型  </p>
 <ul>
-<li>UIViewContentModeScaleAspectFill</li>
-<li>UIViewContentModeScaleAspectFit</li>
-<li>UIViewContentModeScaleToFill</li>
+<li>UIViewContentModeScaleAspectFill        <em>【满屏-不变形】</em></li>
+<li>UIViewContentModeScaleAspectFit        <em>【适屏-不变形】</em></li>
+<li>UIViewContentModeScaleToFill            <em>【拉到铺满-会变形】</em></li>
 </ul>
 <p>你也可以使用自己定义的<strong>drawRect：</strong>方法来自定义，此时应该设置Contenct Mode为：  </p>
 <ul>
 <li>UIViewContentModeRedraw  </li>
 </ul>
-<h3 id="Built-In_Animation_Support">Built-In Animation Support</h3>
+<h3 id="Built-In_Animation_Support『动画』">Built-In Animation Support『动画』</h3>
 <p>要使用动画，只需两个步骤  </p>
 <ul>
 <li>告诉UIKit你希望执行动画</li>
 <li>改变属性的值<blockquote>
 <ol>
 <li>Tell UIKit that you want to perform an animation.</li>
+<li>Change the value of the property.  </li>
 </ol>
 </blockquote>
 </li>
 </ul>
-<ol>
-<li>Change the value of the property.  </li>
-</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#例子为某个viewController中的方法，self.view为视图控制器根式图</span></div><div class="line"><span class="preprocessor">#告诉UIKit你希望执行动画</span></div><div class="line">[<span class="built_in">UIView</span> beginAnimations:<span class="string">@"View Flip"</span> context:<span class="literal">NULL</span>];</div><div class="line">[<span class="built_in">UIView</span> setAnimationDuration:<span class="number">0.4</span>];</div><div class="line">[<span class="built_in">UIView</span> setAnimationCurve:UIViewAnimationCurveEaseInOut];</div><div class="line">..<span class="variable">.other</span> codes</div><div class="line"><span class="preprocessor">#在指定的view中假如动画</span></div><div class="line">[<span class="built_in">UIView</span> setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:<span class="keyword">self</span><span class="variable">.view</span> cache:<span class="literal">YES</span>];</div><div class="line">..<span class="variable">.other</span> codes</div><div class="line"><span class="preprocessor">#提交动画</span></div><div class="line">[<span class="built_in">UIView</span> commitAnimations];</div></pre></td></tr></table></figure>
+
 <p>
         
           <p class="article-more-link">

@@ -5,18 +5,18 @@
   
   <title>View Program | jackhub space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The view draw cycle
-When a view first appears onthe screen, the system asks it to draw its content. The system captures a snapshot of this content and usesthat snapshot as the view’s visual representa">
+  <meta name="description" content="The view draw cycle 『view生命周期』
+When a view first appears onthe screen, the system asks it to draw its content. The system captures a snapshot of this content and usesthat snapshot as the view’s visual">
 <meta property="og:type" content="article">
 <meta property="og:title" content="View Program">
 <meta property="og:url" content="http://yoursite.com/2015/01/08/View-Program/">
 <meta property="og:site_name" content="jackhub space">
-<meta property="og:description" content="The view draw cycle
-When a view first appears onthe screen, the system asks it to draw its content. The system captures a snapshot of this content and usesthat snapshot as the view’s visual representa">
+<meta property="og:description" content="The view draw cycle 『view生命周期』
+When a view first appears onthe screen, the system asks it to draw its content. The system captures a snapshot of this content and usesthat snapshot as the view’s visual">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View Program">
-<meta name="twitter:description" content="The view draw cycle
-When a view first appears onthe screen, the system asks it to draw its content. The system captures a snapshot of this content and usesthat snapshot as the view’s visual representa">
+<meta name="twitter:description" content="The view draw cycle 『view生命周期』
+When a view first appears onthe screen, the system asks it to draw its content. The system captures a snapshot of this content and usesthat snapshot as the view’s visual">
 
   
     <link rel="alternative" href="/atom.xml" title="jackhub space" type="application/atom+xml">
@@ -193,45 +193,44 @@ When a view first appears onthe screen, the system asks it to draw its content. 
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="The_view_draw_cycle">The view draw cycle</h3>
+        <h3 id="The_view_draw_cycle_『view生命周期』">The view draw cycle 『view生命周期』</h3>
 <p>When a view first appears on<br>the screen, the system asks it to draw its content. The system captures a snapshot of this content and uses<br>that snapshot as the view’s visual representation. If you never change the view’s content, the view’s drawing<br>code may never be called again. The snapshot image is reused for most operations involving the view. If you<br>do change the content, you notify the system that the view has changed. The view then repeats the process<br>of drawing the view and capturing a snapshot of the new results.</p>
 <p>当你的view内容变化的时候，我们不直接重绘它，而是通过<em>setNeedsDisplay</em>和<em>setNeedsDisplayInRect:</em>方法通知系统去帮我们完成重绘。</p>
 <blockquote>
 <p>When the contents of your view change, you do not redraw those changes directly. Instead, you invalidate the<br>view using either the setNeedsDisplay or setNeedsDisplayInRect: method.  </p>
 </blockquote>
-<h3 id="Content_Mode">Content Mode</h3>
+<h3 id="Content_Mode_『如何拉伸属性』">Content Mode 『如何拉伸属性』</h3>
 <p>设置当view的形状发生变化时，它的content如何重绘，例如图片是拉伸，平铺等。</p>
 <blockquote>
 <p>Each view has a content mode that controls how the view recycles its content in response to changes in the<br>view’s geometry and whether it recycles its content at all.  </p>
 </blockquote>
 <p>一般有这些类型  </p>
 <ul>
-<li>UIViewContentModeScaleAspectFill</li>
-<li>UIViewContentModeScaleAspectFit</li>
-<li>UIViewContentModeScaleToFill</li>
+<li>UIViewContentModeScaleAspectFill        <em>【满屏-不变形】</em></li>
+<li>UIViewContentModeScaleAspectFit        <em>【适屏-不变形】</em></li>
+<li>UIViewContentModeScaleToFill            <em>【拉到铺满-会变形】</em></li>
 </ul>
 <p>你也可以使用自己定义的<strong>drawRect：</strong>方法来自定义，此时应该设置Contenct Mode为：  </p>
 <ul>
 <li>UIViewContentModeRedraw  </li>
 </ul>
-<h3 id="Built-In_Animation_Support">Built-In Animation Support</h3>
+<h3 id="Built-In_Animation_Support『动画』">Built-In Animation Support『动画』</h3>
 <p>要使用动画，只需两个步骤  </p>
 <ul>
 <li>告诉UIKit你希望执行动画</li>
 <li>改变属性的值<blockquote>
 <ol>
 <li>Tell UIKit that you want to perform an animation.</li>
+<li>Change the value of the property.  </li>
 </ol>
 </blockquote>
 </li>
 </ul>
-<ol>
-<li>Change the value of the property.  </li>
-</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#例子为某个viewController中的方法，self.view为视图控制器根式图</span></div><div class="line"><span class="preprocessor">#告诉UIKit你希望执行动画</span></div><div class="line">[<span class="built_in">UIView</span> beginAnimations:<span class="string">@"View Flip"</span> context:<span class="literal">NULL</span>];</div><div class="line">[<span class="built_in">UIView</span> setAnimationDuration:<span class="number">0.4</span>];</div><div class="line">[<span class="built_in">UIView</span> setAnimationCurve:UIViewAnimationCurveEaseInOut];</div><div class="line">..<span class="variable">.other</span> codes</div><div class="line"><span class="preprocessor">#在指定的view中假如动画</span></div><div class="line">[<span class="built_in">UIView</span> setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:<span class="keyword">self</span><span class="variable">.view</span> cache:<span class="literal">YES</span>];</div><div class="line">..<span class="variable">.other</span> codes</div><div class="line"><span class="preprocessor">#提交动画</span></div><div class="line">[<span class="built_in">UIView</span> commitAnimations];</div></pre></td></tr></table></figure>
+
 <p><a id="more"></a></p>
-<h3 id="View_Geometry_and_Coordinate_Systems">View Geometry and Coordinate Systems</h3>
-<p>坐标系统</p>
-<p>The Relationship of the Frame, Bounds, and Center Properties<br>A view object tracks its size and location using its frame, bounds, and center properties:<br>● The frame property contains the frame rectangle, which specifies the size and location of the view in its <strong><em>superview’s coordinate system</em></strong>.<br>● The bounds property contains the bounds rectangle, which specifies the size of the view (and its content origin) in the view’s own <strong><em>local coordinate system</em></strong>.<br>● The center property contains the known center point of the view in the <strong><em>superview’s coordinate system</em></strong>.  </p>
+<h3 id="View_Geometry_and_Coordinate_Systems_『坐标系统』">View Geometry and Coordinate Systems 『坐标系统』</h3>
+<p>The Relationship of the Frame, Bounds, and Center Properties<br>A view object tracks its size and location using its frame, bounds, and center properties:<br>● The <strong>frame</strong> property contains the frame rectangle, which specifies the size and location of the view in its <strong><em>superview’s coordinate system.『frame是相对父视图的坐标系统』</em></strong><br>● The <strong>bounds</strong> property contains the bounds rectangle, which specifies the size of the view (and its content origin) in the view’s own <strong><em>local coordinate system.『bounds是相对自身坐标系统 』</em></strong><br>● The center property contains the known center point of the view in the <strong><em>superview’s coordinate system.『center也是相对父视图坐标系统』</em></strong>  </p>
 <p>更改view的形状和坐标值，一边我们使用Frame和Center属性。</p>
 <blockquote>
 <p>You use the center and frame properties primarily for manipulating the geometry of the current view.If you are changing only the position of the view (and not its size), the center property is the preferred way to do so.</p>
@@ -240,13 +239,13 @@ When a view first appears onthe screen, the system asks it to draw its content. 
 <blockquote>
 <p>You use the bounds property primarily during drawing. The bounds rectangle is expressed in the view’s own local coordinate system. The default origin of this rectangle is (0, 0) and its size matches the size of the frame rectangle. Anything you draw inside this rectangle is part of the view’s visible content.</p>
 </blockquote>
-<h3 id="Points_Versus_Pixels">Points Versus Pixels</h3>
+<h3 id="Points_Versus_Pixels_『坐标与像素』">Points Versus Pixels 『坐标与像素』</h3>
 <p>在iOS中的所有坐标值和距离都是用浮点数坐标Points表示的.</p>
 <blockquote>
 <p>Device Screen dimensions (in points) </p>
 <p>iPhone and iPod touch devices with 4-inch Retina display <strong>320 x 568</strong><br>Other iPhone and iPod touch devices <strong>320 x 480</strong><br>iPad <strong>768 x 1024</strong>  </p>
 </blockquote>
-<h2 id="Windows">Windows</h2>
+<h2 id="Windows『窗口』">Windows『窗口』</h2>
 <p>每个iOS程序至少需要一个窗口(UIWindow类), 有些可能程序可能需要多个. 一个window主要负责这些事项:<br>一个提供显示的区域, 传递事件和与view controller一起为屏幕旋转提供支持.</p>
 <p>Every iOS application needs at least one window—an instance of the UIWindow class—and some may include more than one window. A window object has several responsibilities:  </p>
 <ul>
@@ -257,11 +256,11 @@ When a view first appears onthe screen, the system asks it to draw its content. 
 <blockquote>
 <p>In iOS, windows do not have title bars, close boxes, or any other visual adornments. A window is always just<br>a blank container for one or more views. Also, applications do not change their content by showing new<br>windows. When you want to change the displayed content, you change the frontmost views of your window<br>instead.</p>
 </blockquote>
-<h3 id="Creating_a_Window_Programmatically">Creating a Window Programmatically</h3>
+<h3 id="Creating_a_Window_Programmatically_『创建窗口』">Creating a Window Programmatically 『创建窗口』</h3>
 <p>通过代码创建窗口</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span><span class="variable">.window</span> = [[[<span class="built_in">UIWindow</span> alloc] initWithFrame:[[UIScreen mainScreen] bounds]]</div><div class="line">autorelease];</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]</div><div class="line">autorelease];</div><div class="line"><span class="keyword">...</span></div><div class="line">[self.window makeKeyAndVisible];</div></pre></td></tr></table></figure>
 
-<h3 id="Adding_Content_to_Your_Window">Adding Content to Your Window</h3>
+<h3 id="Adding_Content_to_Your_Window_『添加content到窗口』">Adding Content to Your Window 『添加content到窗口』</h3>
 <p>通常每个window都有一个root view对象, 它包含所有其他views并显示内容. 这样的话如果你需要更新窗口中的内容, 你仅需要替换root view就可以完成. 安装一个view到你的window中, 使用<strong>addSubview:</strong>方法. 例如安装一个由view controller管理的视图:</p>
 <blockquote>
 <p>Each window typically has a single root view object (managed by a corresponding view controller) that contains<br>all of the other views representing your content. Using a single root view simplifies the process of changing<br>your interface; to display new content, all you have to do is replace the root view. To install a view in your<br>window, use the addSubview: method. For example, to install a view that is managed by a view controller,<br>you would use code similar to the following: </p>
@@ -272,7 +271,7 @@ When a view first appears onthe screen, the system asks it to draw its content. 
 <blockquote>
 <p>If the root view of your window is provided by a container view controller (such as a <strong>tabbar controller, navigation controller, or split-view controller</strong>), you do not need to set the initial size of the view yourself. The container view controller automatically sizes its view appropriately based on whether the status bar is visible.</p>
 </blockquote>
-<h3 id="Monitoring_Window_Changes">Monitoring Window Changes</h3>
+<h3 id="Monitoring_Window_Changes_『监视窗口变化』">Monitoring Window Changes 『监视窗口变化』</h3>
 <p>If you want to track the appearance or disappearance of windows inside your application, you can do so using these window-related notifications:  </p>
 <ul>
 <li>UIWindowDidBecomeVisibleNotification</li>
@@ -280,7 +279,7 @@ When a view first appears onthe screen, the system asks it to draw its content. 
 <li>UIWindowDidBecomeKeyNotification  </li>
 <li>UIWindowDidResignKeyNotification  </li>
 </ul>
-<h2 id="View">View</h2>
+<h2 id="View_『视图』">View 『视图』</h2>
 <p>由于view是你的程序中与用户最主要的交互的交互方式, view有非常多的功能, 例如下面这些:</p>
 <ul>
 <li>Layout and subview management<ul>
@@ -301,13 +300,13 @@ When a view first appears onthe screen, the system asks it to draw its content. 
 </ul>
 </li>
 </ul>
-<h3 id="Creating_and_Configuring_View_Objects">Creating and Configuring View Objects</h3>
+<h3 id="Creating_and_Configuring_View_Objects『创建和设置视图』">Creating and Configuring View Objects『创建和设置视图』</h3>
 <p>手动在程序中创建一个view:  </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CGRect</span> viewRect = CGRectMake(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);       </div><div class="line"><span class="built_in">UIView</span>* myView = [[<span class="built_in">UIView</span> alloc] initWithFrame:viewRect];</div></pre></td></tr></table></figure>
 
 
 
-<h3 id="Adding_and_Removing_Subviews">Adding and Removing Subviews</h3>
+<h3 id="Adding_and_Removing_Subviews_『视图层次管理方法』">Adding and Removing Subviews 『视图层次管理方法』</h3>
 <p>主要有下面这些方法:</p>
 <ul>
 <li>addSubview:</li>
@@ -321,12 +320,14 @@ When a view first appears onthe screen, the system asks it to draw its content. 
 <blockquote>
 <p>A subview whose frame lies outside of its superview’s visible bounds is not clipped by default. If you want your subview to be clipped to the superview’s bounds, you must explicitly set the clipsToBounds property of the superview to YES.</p>
 </blockquote>
-<h3 id="Locating_Views_in_a_View_Hierarchy">Locating Views in a View Hierarchy</h3>
+<h3 id="Locating_Views_in_a_View_Hierarchy_『定位视图Tag』">Locating Views in a View Hierarchy 『定位视图Tag』</h3>
 <p>在view hirearchy中获取一个view, 通过如下方法:</p>
 <ul>
 <li>存一个指向这个view的指针</li>
 <li>给view标识一个tag, 通过<strong>viewWithTag:</strong>方法获取它</li>
 </ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#通过<span class="keyword">tag</span>属性设置<span class="keyword">tag</span>值</div><div class="line">#@property(nonatomic) NSInteger <span class="keyword">tag</span></div><div class="line">myView.<span class="keyword">tag</span>=<span class="number">100</span>;</div><div class="line">#通过viewWithTag：方法获取指定<span class="keyword">tag</span>值的<span class="keyword">view</span></div><div class="line">UIView* herView=[self.window viewWithTa<span class="variable">g:100</span>]</div></pre></td></tr></table></figure>
+
 <blockquote>
 <p>There are two ways to locate views in a view hierarchy:</p>
 <ul>
@@ -334,11 +335,11 @@ When a view first appears onthe screen, the system asks it to draw its content. 
 <li>Assign a unique integer to each view’s tag property and use the viewWithTag: method to locate it.</li>
 </ul>
 </blockquote>
-<h3 id="Translating,_Scaling,_and_Rotating_Views">Translating, Scaling, and Rotating Views</h3>
-<p>通过view中的transform属性来旋转</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// M_PI/4.0 is one quarter of a half circle, or 45 degrees.  </span></div><div class="line">CGAffineTransform <span class="keyword">xform</span> = CGAffineTransformMakeRotation(M_PI/<span class="number">4.0</span>);  </div><div class="line">self.view.transform = <span class="keyword">xform</span>;</div></pre></td></tr></table></figure>
+<h3 id="Translating,_Scaling,_and_Rotating_Views『平移缩放和旋转』">Translating, Scaling, and Rotating Views『平移缩放和旋转』</h3>
+<p>通过view中的transform属性来旋转  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#对视图比例缩放</span></div><div class="line">CGAffineTransform CGAffineTransformScale ( CGAffineTransform t, CGFloat sx, CGFloat sy );</div><div class="line"><span class="preprocessor">#对视图做变焦旋转</span></div><div class="line">CGAffineTransform CGAffineTransformRotate ( CGAffineTransform t, CGFloat angle );</div><div class="line"><span class="preprocessor">#对视图做平移</span></div><div class="line">CGAffineTransform CGAffineTransformConcat ( CGAffineTransform t1, CGAffineTransform t2 );</div><div class="line"></div><div class="line"><span class="preprocessor"># M_PI/4.0 is one quarter of a half circle, or 45 degrees.    </span></div><div class="line">CGAffineTransform xform = CGAffineTransformMakeRotation(M_PI/<span class="number">4.0</span>);  </div><div class="line">self.view.transform = xform;</div></pre></td></tr></table></figure>
 
-<h3 id="Converting_Coordinates_in_the_View_Hierarchy">Converting Coordinates in the View Hierarchy</h3>
+<h3 id="Converting_Coordinates_in_the_View_Hierarchy『坐标系统转换』">Converting Coordinates in the View Hierarchy『坐标系统转换』</h3>
 <p>坐标转换</p>
 <p>convertPoint:fromView:<br>convertRect:fromView:<br>convertPoint:toView:<br>convertRect:toView:<br>convertPoint:fromWindow:<br>convertRect:fromWindow:<br>convertPoint:toWindow:<br>convertRect:toWindow:  </p>
 

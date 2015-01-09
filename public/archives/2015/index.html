@@ -203,11 +203,14 @@
 <blockquote>
 <p>主要配置文件<strong>/blog/_config.yml</strong>和主题文件<strong>/theme_name/_config.yml</strong><br>参考博客:<a href="http://zipperary.com/2013/05/29/hexo-guide-3/" target="_blank" rel="external">http://zipperary.com/2013/05/29/hexo-guide-3/</a></p>
 </blockquote>
-<h3 id="3-_存放博客图片和一些素材">3. 存放博客图片和一些素材</h3>
+<h4 id="3-_存放博客图片和一些素材">3. 存放博客图片和一些素材</h4>
 <blockquote>
 <p>在博客目录source中创建一个img文件加, 然后将你要用的图片放在那里, 然后使用/img/image_name引用它就可以啦<br>404页面: 直接在source目录下面创建一个就可以了, 可以使用腾讯公益.</p>
 </blockquote>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>404<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://www.qq.com/404/search_children.js"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<h4 id="4-_使用git保管hexo">4. 使用git保管hexo</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#1. 创建一个仓库jackhub_blog, 并clone到本地仓库</span></div><div class="line">$ git clone https:<span class="comment">//github.com/jackhub/jackhub_blog.git</span></div><div class="line"></div><div class="line"><span class="preprocessor">#2. 加hexo文件复制过来到git目录, 添加并提交</span></div><div class="line">$ git add .</div><div class="line">$ git commit -m <span class="string">"blog init"</span></div><div class="line"></div><div class="line"><span class="preprocessor">#3. 同步到git远程仓库中</span></div><div class="line">$ git push</div><div class="line"></div><div class="line"><span class="preprocessor">#4. 主题文件中有.git目录,会被当作一个submodule, 是push不到github的, 删除.git目录即可.</span></div><div class="line"></div><div class="line"><span class="preprocessor">#5. 如果已经添加了一个submodule, 可以直接删除这个submodule,使用git rm --cached path_name删除缓存, 重新git add .&& git commit -m "" &&git push</span></div></pre></td></tr></table></figure>
 
 
       
@@ -255,41 +258,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="The_view_draw_cycle">The view draw cycle</h3>
+        <h3 id="The_view_draw_cycle_『view生命周期』">The view draw cycle 『view生命周期』</h3>
 <p>When a view first appears on<br>the screen, the system asks it to draw its content. The system captures a snapshot of this content and uses<br>that snapshot as the view’s visual representation. If you never change the view’s content, the view’s drawing<br>code may never be called again. The snapshot image is reused for most operations involving the view. If you<br>do change the content, you notify the system that the view has changed. The view then repeats the process<br>of drawing the view and capturing a snapshot of the new results.</p>
 <p>当你的view内容变化的时候，我们不直接重绘它，而是通过<em>setNeedsDisplay</em>和<em>setNeedsDisplayInRect:</em>方法通知系统去帮我们完成重绘。</p>
 <blockquote>
 <p>When the contents of your view change, you do not redraw those changes directly. Instead, you invalidate the<br>view using either the setNeedsDisplay or setNeedsDisplayInRect: method.  </p>
 </blockquote>
-<h3 id="Content_Mode">Content Mode</h3>
+<h3 id="Content_Mode_『如何拉伸属性』">Content Mode 『如何拉伸属性』</h3>
 <p>设置当view的形状发生变化时，它的content如何重绘，例如图片是拉伸，平铺等。</p>
 <blockquote>
 <p>Each view has a content mode that controls how the view recycles its content in response to changes in the<br>view’s geometry and whether it recycles its content at all.  </p>
 </blockquote>
 <p>一般有这些类型  </p>
 <ul>
-<li>UIViewContentModeScaleAspectFill</li>
-<li>UIViewContentModeScaleAspectFit</li>
-<li>UIViewContentModeScaleToFill</li>
+<li>UIViewContentModeScaleAspectFill        <em>【满屏-不变形】</em></li>
+<li>UIViewContentModeScaleAspectFit        <em>【适屏-不变形】</em></li>
+<li>UIViewContentModeScaleToFill            <em>【拉到铺满-会变形】</em></li>
 </ul>
 <p>你也可以使用自己定义的<strong>drawRect：</strong>方法来自定义，此时应该设置Contenct Mode为：  </p>
 <ul>
 <li>UIViewContentModeRedraw  </li>
 </ul>
-<h3 id="Built-In_Animation_Support">Built-In Animation Support</h3>
+<h3 id="Built-In_Animation_Support『动画』">Built-In Animation Support『动画』</h3>
 <p>要使用动画，只需两个步骤  </p>
 <ul>
 <li>告诉UIKit你希望执行动画</li>
 <li>改变属性的值<blockquote>
 <ol>
 <li>Tell UIKit that you want to perform an animation.</li>
+<li>Change the value of the property.  </li>
 </ol>
 </blockquote>
 </li>
 </ul>
-<ol>
-<li>Change the value of the property.  </li>
-</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#例子为某个viewController中的方法，self.view为视图控制器根式图</span></div><div class="line"><span class="preprocessor">#告诉UIKit你希望执行动画</span></div><div class="line">[<span class="built_in">UIView</span> beginAnimations:<span class="string">@"View Flip"</span> context:<span class="literal">NULL</span>];</div><div class="line">[<span class="built_in">UIView</span> setAnimationDuration:<span class="number">0.4</span>];</div><div class="line">[<span class="built_in">UIView</span> setAnimationCurve:UIViewAnimationCurveEaseInOut];</div><div class="line">..<span class="variable">.other</span> codes</div><div class="line"><span class="preprocessor">#在指定的view中假如动画</span></div><div class="line">[<span class="built_in">UIView</span> setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:<span class="keyword">self</span><span class="variable">.view</span> cache:<span class="literal">YES</span>];</div><div class="line">..<span class="variable">.other</span> codes</div><div class="line"><span class="preprocessor">#提交动画</span></div><div class="line">[<span class="built_in">UIView</span> commitAnimations];</div></pre></td></tr></table></figure>
+
 <p>
         
           <p class="article-more-link">

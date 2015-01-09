@@ -44,4 +44,8 @@ $ git commit -m "blog init"
 
 #3. 同步到git远程仓库中
 $ git push
+
+#4. 主题文件中有.git目录,会被当作一个submodule, 是push不到github的, 删除.git目录即可.
+
+#5. 如果已经添加了一个submodule, 可以直接删除这个submodule,使用git rm --cached path_name删除缓存, 重新git add .&& git commit -m "" &&git push
 ```
