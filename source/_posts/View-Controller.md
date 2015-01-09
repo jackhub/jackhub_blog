@@ -15,5 +15,6 @@ tags: iOS
 * window从screen那里获取屏幕的显示信息,根据此初始化UIWindow frame大小.
 * UIWindow中包含有一个*rootViewController的指针, 我们让它指向我们的viewController, 这样我们viewControl中的根UIview会自动添加为UIWindow的subView, viewController中的内容就能显示在窗口中了.
 
+> A view controller is usually owned by a window or another view controller.If a view controller is owned by a window object, it acts as the window’s root view controller.The view controller’s root view is added as a subview of the window and resized to fill the window.If the view controller is owned by another view controller, then the parent view controller determines when and how the child view controller’s contents are displayed.
 
 ![viewWindows](http://i2.tietuku.com/5def40f7afd0c98b.png)
