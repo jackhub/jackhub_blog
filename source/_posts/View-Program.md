@@ -4,22 +4,16 @@ tags: iOS
 ---
 
 ###The view draw cycle 『view生命周期』
-When a view first appears on
-the screen, the system asks it to draw its content. The system captures a snapshot of this content and uses
-that snapshot as the view’s visual representation. If you never change the view’s content, the view’s drawing
-code may never be called again. The snapshot image is reused for most operations involving the view. If you
-do change the content, you notify the system that the view has changed. The view then repeats the process
-of drawing the view and capturing a snapshot of the new results.
+When a view first appears on the screen, the system asks it to draw its content. The system captures a snapshot of this content and uses that snapshot as the view’s visual representation. If you never change the view’s content, the view’s drawing
+code may never be called again. The snapshot image is reused for most operations involving the view. If you do change the content, you notify the system that the view has changed. The view then repeats the process of drawing the view and capturing a snapshot of the new results.
 
 当你的view内容变化的时候，我们不直接重绘它，而是通过*setNeedsDisplay*和*setNeedsDisplayInRect:*方法通知系统去帮我们完成重绘。
->When the contents of your view change, you do not redraw those changes directly. Instead, you invalidate the
-view using either the setNeedsDisplay or setNeedsDisplayInRect: method.  
+>When the contents of your view change, you do not redraw those changes directly. Instead, you invalidate the view using either the setNeedsDisplay or setNeedsDisplayInRect: method.  
 
 ###Content Mode 『如何拉伸属性』
 
 设置当view的形状发生变化时，它的content如何重绘，例如图片是拉伸，平铺等。
->Each view has a content mode that controls how the view recycles its content in response to changes in the
-view’s geometry and whether it recycles its content at all.  
+>Each view has a content mode that controls how the view recycles its content in response to changes in the view’s geometry and whether it recycles its content at all.  
 
 一般有这些类型  
 
@@ -90,10 +84,7 @@ Every iOS application needs at least one window—an instance of the UIWindow cl
 *  It plays a key role in the delivery of touch events to your views and other application objects.  
 *  It works with your application’s view controllers to facilitate orientation changes.  
 
->In iOS, windows do not have title bars, close boxes, or any other visual adornments. A window is always just
-a blank container for one or more views. Also, applications do not change their content by showing new
-windows. When you want to change the displayed content, you change the frontmost views of your window
-instead.
+>In iOS, windows do not have title bars, close boxes, or any other visual adornments. A window is always just a blank container for one or more views. Also, applications do not change their content by showing new windows. When you want to change the displayed content, you change the frontmost views of your window instead.
 
 ###Creating a Window Programmatically 『创建窗口』
 通过代码创建窗口
@@ -108,11 +99,8 @@ autorelease];
 
 通常每个window都有一个root view对象, 它包含所有其他views并显示内容. 这样的话如果你需要更新窗口中的内容, 你仅需要替换root view就可以完成. 安装一个view到你的window中, 使用**addSubview:**方法. 例如安装一个由view controller管理的视图:
 
->Each window typically has a single root view object (managed by a corresponding view controller) that contains
-all of the other views representing your content. Using a single root view simplifies the process of changing
-your interface; to display new content, all you have to do is replace the root view. To install a view in your
-window, use the addSubview: method. For example, to install a view that is managed by a view controller,
-you would use code similar to the following: 
+>Each window typically has a single root view object (managed by a corresponding view controller) that contains all of the other views representing your content. Using a single root view simplifies the process of changing your interface; to display new content, all you have to do is replace the root view. To install a view in your
+window, use the addSubview: method. For example, to install a view that is managed by a view controller, you would use code similar to the following: 
  
 ```
 [window addSubview:viewController.view];

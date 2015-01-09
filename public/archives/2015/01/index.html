@@ -259,15 +259,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="The_view_draw_cycle_『view生命周期』">The view draw cycle 『view生命周期』</h3>
-<p>When a view first appears on<br>the screen, the system asks it to draw its content. The system captures a snapshot of this content and uses<br>that snapshot as the view’s visual representation. If you never change the view’s content, the view’s drawing<br>code may never be called again. The snapshot image is reused for most operations involving the view. If you<br>do change the content, you notify the system that the view has changed. The view then repeats the process<br>of drawing the view and capturing a snapshot of the new results.</p>
+<p>When a view first appears on the screen, the system asks it to draw its content. The system captures a snapshot of this content and uses that snapshot as the view’s visual representation. If you never change the view’s content, the view’s drawing<br>code may never be called again. The snapshot image is reused for most operations involving the view. If you do change the content, you notify the system that the view has changed. The view then repeats the process of drawing the view and capturing a snapshot of the new results.</p>
 <p>当你的view内容变化的时候，我们不直接重绘它，而是通过<em>setNeedsDisplay</em>和<em>setNeedsDisplayInRect:</em>方法通知系统去帮我们完成重绘。</p>
 <blockquote>
-<p>When the contents of your view change, you do not redraw those changes directly. Instead, you invalidate the<br>view using either the setNeedsDisplay or setNeedsDisplayInRect: method.  </p>
+<p>When the contents of your view change, you do not redraw those changes directly. Instead, you invalidate the view using either the setNeedsDisplay or setNeedsDisplayInRect: method.  </p>
 </blockquote>
 <h3 id="Content_Mode_『如何拉伸属性』">Content Mode 『如何拉伸属性』</h3>
 <p>设置当view的形状发生变化时，它的content如何重绘，例如图片是拉伸，平铺等。</p>
 <blockquote>
-<p>Each view has a content mode that controls how the view recycles its content in response to changes in the<br>view’s geometry and whether it recycles its content at all.  </p>
+<p>Each view has a content mode that controls how the view recycles its content in response to changes in the view’s geometry and whether it recycles its content at all.  </p>
 </blockquote>
 <p>一般有这些类型  </p>
 <ul>
