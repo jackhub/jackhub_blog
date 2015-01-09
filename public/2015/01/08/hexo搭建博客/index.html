@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hexo搭建博客 | jackhub space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本片随笔主要记录在使用hexo搭建博客过程中碰到的一些问题点
+1. hexo generate不生成css文件, 造成页面没有加载不了样式
+
+由于hexo-renderer-stylus是为hexo 3.0所写, 使用旧版本就能解决问题  
+
+1$ npm install hexo-renderer-stylus@0.1 --save
+
+2. hexo的配置
+
+主要配置文件/blog/_confi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo搭建博客">
+<meta property="og:url" content="http://yoursite.com/2015/01/08/hexo搭建博客/">
+<meta property="og:site_name" content="jackhub space">
+<meta property="og:description" content="本片随笔主要记录在使用hexo搭建博客过程中碰到的一些问题点
+1. hexo generate不生成css文件, 造成页面没有加载不了样式
+
+由于hexo-renderer-stylus是为hexo 3.0所写, 使用旧版本就能解决问题  
+
+1$ npm install hexo-renderer-stylus@0.1 --save
+
+2. hexo的配置
+
+主要配置文件/blog/_confi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo搭建博客">
+<meta name="twitter:description" content="本片随笔主要记录在使用hexo搭建博客过程中碰到的一些问题点
+1. hexo generate不生成css文件, 造成页面没有加载不了样式
+
+由于hexo-renderer-stylus是为hexo 3.0所写, 使用旧版本就能解决问题  
+
+1$ npm install hexo-renderer-stylus@0.1 --save
+
+2. hexo的配置
+
+主要配置文件/blog/_confi">
+
+  
+    <link rel="alternative" href="/atom.xml" title="jackhub space" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/jj.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="/img/longmao.jpg">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">jackhub</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">朝着梦想追逐的小年轻</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+							<li><a href="/tags/iOS">iOS</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/jackhub" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/iwaich" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud">
+						<a href="/tags/iOS/" style="font-size: NaNpx;">iOS</a><a href="/tags/随笔/" style="font-size: NaNpx;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/longmao.jpg">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">jackhub</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">朝着梦想追逐的小年轻</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+					<li><a href="/tags/iOS">iOS</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/jackhub" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/iwaich" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-hexo搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/01/08/hexo搭建博客/" class="article-date">
+  	<time datetime="2015-01-08T11:42:49.000Z" itemprop="datePublished">Jan 8 2015</time>
+</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo搭建博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本片随笔主要记录在使用hexo搭建博客过程中碰到的一些问题点</p>
+<h4 id="1-_hexo_generate不生成css文件,_造成页面没有加载不了样式">1. hexo generate不生成css文件, 造成页面没有加载不了样式</h4>
+<blockquote>
+<p>由于hexo-renderer-stylus是为hexo 3.0所写, 使用旧版本就能解决问题  </p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>npm install hexo-renderer-stylus<span class="variable">@0</span>.<span class="number">1</span> --save</div></pre></td></tr></table></figure>
+
+<h4 id="2-_hexo的配置">2. hexo的配置</h4>
+<blockquote>
+<p>主要配置文件<strong>/blog/_config.yml</strong>和主题文件<strong>/theme_name/_config.yml</strong><br>参考博客:<a href="http://zipperary.com/2013/05/29/hexo-guide-3/" target="_blank" rel="external">http://zipperary.com/2013/05/29/hexo-guide-3/</a></p>
+</blockquote>
+<h3 id="3-_存放博客图片和一些素材">3. 存放博客图片和一些素材</h3>
+<blockquote>
+<p>在博客目录source中创建一个img文件加, 然后将你要用的图片放在那里, 然后使用/img/image_name引用它就可以啦<br>404页面: 直接在source目录下面创建一个就可以了, 可以使用腾讯公益.</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>404<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://www.qq.com/404/search_children.js"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/01/08/View-Program/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">View Program</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="hexo搭建博客" data-title="hexo搭建博客" data-url="http://yoursite.com/2015/01/08/hexo搭建博客/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 jackhub
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  <script src="/js/main.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
