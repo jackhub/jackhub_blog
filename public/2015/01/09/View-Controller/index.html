@@ -3,20 +3,31 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | jackhub space</title>
+  <title>View Controller | jackhub space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="ViewController的结构关系
+
+ViewController中包含一个指向storyboard的指针, 一个项目中只有一个storyboard, 所有的其他viewController也都指向它.
+viewController中包含一个UIview的指针, 它是这个viewCntroller的根视图, 被viewControl管理的其他视图都在它之上.
+viewControl来负责实现它">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2015/01/08/hello-world/">
+<meta property="og:title" content="View Controller">
+<meta property="og:url" content="http://yoursite.com/2015/01/09/View-Controller/">
 <meta property="og:site_name" content="jackhub space">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
-Quick">
+<meta property="og:description" content="ViewController的结构关系
+
+ViewController中包含一个指向storyboard的指针, 一个项目中只有一个storyboard, 所有的其他viewController也都指向它.
+viewController中包含一个UIview的指针, 它是这个viewCntroller的根视图, 被viewControl管理的其他视图都在它之上.
+viewControl来负责实现它">
+<meta property="og:image" content="http://i2.tietuku.com/aa8b64d36df89717.png">
+<meta property="og:image" content="http://i2.tietuku.com/5def40f7afd0c98b.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="View Controller">
+<meta name="twitter:description" content="ViewController的结构关系
+
+ViewController中包含一个指向storyboard的指针, 一个项目中只有一个storyboard, 所有的其他viewController也都指向它.
+viewController中包含一个UIview的指针, 它是这个viewCntroller的根视图, 被viewControl管理的其他视图都在它之上.
+viewControl来负责实现它">
 
   
     <link rel="alternative" href="/atom.xml" title="jackhub space" type="application/atom+xml">
@@ -164,14 +175,16 @@ Quick">
 		</header>				
 	</div>
 </nav>
-      <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <article id="post-View-Controller" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/01/08/hello-world/" class="article-date">
-  	<time datetime="2015-01-08T07:26:49.000Z" itemprop="datePublished">Jan 8 2015</time>
+      <a href="/2015/01/09/View-Controller/" class="article-date">
+  	<time datetime="2015-01-09T06:48:51.000Z" itemprop="datePublished">Jan 9 2015</time>
 </a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
     </div>
   
   <div class="article-inner">
@@ -183,7 +196,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      View Controller
     </h1>
   
 
@@ -191,24 +204,20 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h3 id="ViewController的结构关系">ViewController的结构关系</h3>
+<ul>
+<li>ViewController中包含一个指向storyboard的指针, 一个项目中只有一个storyboard, 所有的其他viewController也都指向它.</li>
+<li>viewController中包含一个UIview的指针, 它是这个viewCntroller的根视图, 被viewControl管理的其他视图都在它之上.</li>
+<li>viewControl来负责实现它所管理的视图的响应方式, 这个实现了显示和控制的隔离.</li>
+</ul>
+<p><img src="http://i2.tietuku.com/aa8b64d36df89717.png" alt="viewController"></p>
+<h3 id="ViewControl与windows的关系">ViewControl与windows的关系</h3>
+<p>对下面的图片解释一下:  </p>
+<ul>
+<li>window从screen那里获取屏幕的显示信息,根据此初始化UIWindow frame大小.</li>
+<li>UIWindow中包含有一个*rootViewController的指针, 我们让它指向我们的viewController, 这样我们viewControl中的根UIview会自动添加为UIWindow的subView, viewController中的内容就能显示在窗口中了.</li>
+</ul>
+<p><img src="http://i2.tietuku.com/5def40f7afd0c98b.png" alt="viewWindows"></p>
 
       
     </div>
@@ -221,15 +230,11 @@ Quick">
     
 <nav id="article-nav">
   
-    <a href="/2015/01/08/View-Program/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          View Program
-        
-      </div>
-    </a>
   
+    <a href="/2015/01/08/hexo搭建博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo搭建博客</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
   
 </nav>
 
@@ -256,7 +261,7 @@ Quick">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://yoursite.com/2015/01/08/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="View-Controller" data-title="View Controller" data-url="http://yoursite.com/2015/01/09/View-Controller/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
