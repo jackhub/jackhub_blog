@@ -194,7 +194,7 @@
       
         <h3 id="ViewController的结构关系">ViewController的结构关系</h3>
 <ul>
-<li>ViewController中包含一个指向storyboard的指针, 一个项目中只有一个storyboard, 所有的其他viewController也都指向它.</li>
+<li>ViewController中包含一个指向storyboard的指针, 一个项目中只有一个storyboard或者没有, 所有的其他viewController也都指向它.</li>
 <li>viewController中包含一个UIview的指针, 它是这个viewCntroller的根视图, 被viewControl管理的其他视图都在它之上.</li>
 <li>viewControl来负责实现它所管理的视图的响应方式, 这个实现了显示和控制的隔离.</li>
 </ul>
@@ -208,8 +208,12 @@
 <blockquote>
 <p>A view controller is usually owned by a window or another view controller.If a view controller is owned by a window object, it acts as the window’s root view controller.The view controller’s root view is added as a subview of the window and resized to fill the window.If the view controller is owned by another view controller, then the parent view controller determines when and how the child view controller’s contents are displayed.</p>
 </blockquote>
-<p><img src="http://i2.tietuku.com/5def40f7afd0c98b.png" alt="viewWindows"></p>
-
+<p>
+        
+          <p class="article-more-link">
+            <a href="/2015/01/09/View-Controller/#more">more >></a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
