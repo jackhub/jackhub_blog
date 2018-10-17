@@ -4,11 +4,11 @@
 
 # Site
 title: jackhub space
-subtitle: 朝着梦想追逐的小年轻
+subtitle: 修行中...
 description: 代码 设计 生活
 author: jackhub
 email: hujie.code@gmail.com
-language:
+language: C++ Objective-C Swift C JavaScript TypeScript
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
